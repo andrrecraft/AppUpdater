@@ -1,4 +1,5 @@
-package com.github.javiersantos.appupdater;
+package com.AppUpdater.appupdater;
+// package com.github.javiersantos.appupdater;
 
 import android.app.Activity;
 import android.content.Context;
