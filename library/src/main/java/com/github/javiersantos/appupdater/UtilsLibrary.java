@@ -274,12 +274,12 @@ class UtilsLibrary {
         return version;
     }
 
-    static Update getLatestAppVersion(UpdateFrom updateFrom, String url) {
+    static Update getLatestAppVersion(UpdateFrom updateFrom, String url, String apiKeyValue) {
         if (updateFrom == UpdateFrom.XML){
             ParserXML parser = new ParserXML(url);
             return parser.parse();
         } else {
-            return new ParserJSON(url).parse();
+            return new ParserJSON(url, apiKeyValue).parse();
         }
     }
 
