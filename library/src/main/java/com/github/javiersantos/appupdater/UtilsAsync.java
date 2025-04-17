@@ -19,15 +19,17 @@ class UtilsAsync {
         private UpdateFrom updateFrom;
         private GitHub gitHub;
         private String xmlOrJsonUrl;
+        private String apiKeyValue;
         private AppUpdater.LibraryListener listener;
 
-        public LatestAppVersion(Context context, Boolean fromUtils, UpdateFrom updateFrom, GitHub gitHub, String xmlOrJsonUrl, AppUpdater.LibraryListener listener) {
+        public LatestAppVersion(Context context, Boolean fromUtils, UpdateFrom updateFrom, GitHub gitHub, String xmlOrJsonUrl, String apiKeyValue, AppUpdater.LibraryListener listener) {
             this.contextRef = new WeakReference<>(context);
             this.libraryPreferences = new LibraryPreferences(context);
             this.fromUtils = fromUtils;
             this.updateFrom = updateFrom;
             this.gitHub = gitHub;
             this.xmlOrJsonUrl = xmlOrJsonUrl;
+            this.apiKeyValue = apiKeyValue;
             this.listener = listener;
         }
 
@@ -65,7 +67,7 @@ class UtilsAsync {
         protected Update doInBackground(Void... voids) {
             try {
                 if (updateFrom == UpdateFrom.XML || updateFrom == UpdateFrom.JSON) {
-                    Update update = UtilsLibrary.getLatestAppVersion(updateFrom, xmlOrJsonUrl);
+                    Update update = UtilsLibrary.getLatestAppVersion(updateFrom, xmlOrJsonUrl, apiKeyValue);
                     if (update != null) {
                         return update;
                     } else {
