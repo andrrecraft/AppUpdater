@@ -19,13 +19,14 @@ import java.nio.charset.Charset;
 
 class ParserJSON {
     private URL jsonUrl;
+    private String apiKeyValue;
 
     private static final String KEY_LATEST_VERSION = "latestVersion";
     private static final String KEY_LATEST_VERSION_CODE = "latestVersionCode";
     private static final String KEY_RELEASE_NOTES = "releaseNotes";
     private static final String KEY_URL = "url";
 
-    public ParserJSON(String url) {
+    public ParserJSON(String url, String apiKeyValue) {
         try {
             this.jsonUrl = new URL(url);
         } catch (MalformedURLException e) {
@@ -74,7 +75,24 @@ class ParserJSON {
     }
 
     private JSONObject readJsonFromUrl() throws IOException, JSONException {
-        InputStream is = this.jsonUrl.openStream();
+        InputStream is;
+        if (apiKeyValue == null) {
+            is = this.jsonUrl.openStream();
+        } else {
+            System.out.println("IT WORKEDDDDDDD FJMWOPIAFJMPWOAFJMOWAPFKOAW");
+            try {
+                con.setRequestMethod("GET");
+                con.setRequestProperty("x-api-key","u7wz4KCw3vGktoQFv2zjPVxxSkBGGDslDDHpkZDXasVppShDi6cGlGH2HYkT6vv9");
+                con.setRequestProperty("Accept", "application/json");
+            } catch (ProtocolException e) {
+                throw new RuntimeException(e);
+            }
+            
+            System.out.println("IT WORKEDDDDDDD 111111");
+            is = con.getInputStream();
+            
+            System.out.println("IT WORKEDDDDDDD 2222222");
+        }
         try {
             BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
             String jsonText = readAll(rd);
