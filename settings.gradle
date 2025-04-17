@@ -1,9 +1,10 @@
-// dependencyResolutionManagement {
-//     // repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS) // This is likely already set
-//     repositories {
-//         google()
-//         mavenCentral()
-//     }
-// }
+dependencyResolutionManagement {
+    // repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS) // This is likely already set
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
 
 include ':app', ':library'
