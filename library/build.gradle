@@ -30,3 +30,9 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:3.10.0'
     api 'org.jsoup:jsoup:1.11.3'
 }
+
+repositories {
+    mavenCentral()  // Use Maven Central for most dependencies
+    google()        // Google repository for Android dependencies
+    maven { url "https://jitpack.io" }  // Add Jitpack if needed for specific dependencies
+}
