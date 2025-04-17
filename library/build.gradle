@@ -23,6 +23,12 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()  // Use Maven Central for most dependencies
+    google()        // Google repository for Android dependencies
+    // maven { url "https://jitpack.io" }  // Add Jitpack if needed for specific dependencies
+}
+
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     // api 'com.android.support:appcompat-v7:27.1.1'
@@ -31,8 +37,3 @@ dependencies {
     api 'org.jsoup:jsoup:1.14.3'
 }
 
-repositories {
-    mavenCentral()  // Use Maven Central for most dependencies
-    google()        // Google repository for Android dependencies
-    maven { url "https://jitpack.io" }  // Add Jitpack if needed for specific dependencies
-}
