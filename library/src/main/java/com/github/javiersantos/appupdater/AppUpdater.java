@@ -27,6 +27,7 @@ public class AppUpdater implements IAppUpdater {
     private Duration duration;
     private GitHub gitHub;
     private String xmlOrJsonUrl;
+    private String apiKeyValue; // new added from me
     private Integer showEvery;
     private Boolean showAppUpdated;
     private String titleUpdate, descriptionUpdate, btnDismiss, btnUpdate, btnDisable; // Update available
@@ -94,6 +95,11 @@ public class AppUpdater implements IAppUpdater {
         return this;
     }
 
+    @Override
+    public AppUpdater setApiKeyValue(@NonNull String apiKeyValue) {
+        this.apiKeyValue = apiKeyValue;
+        return this;
+    }
 
     @Override
     public AppUpdater showEvery(Integer times) {
@@ -327,7 +333,7 @@ public class AppUpdater implements IAppUpdater {
 
     @Override
     public void start() {
-        latestAppVersion = new UtilsAsync.LatestAppVersion(context, false, updateFrom, gitHub, xmlOrJsonUrl, new LibraryListener() {
+        latestAppVersion = new UtilsAsync.LatestAppVersion(context, false, updateFrom, gitHub, xmlOrJsonUrl, apiKeyValue, new LibraryListener() {
             @Override
             public void onSuccess(Update update) {
                 if (context instanceof Activity && ((Activity) context).isFinishing()) {
