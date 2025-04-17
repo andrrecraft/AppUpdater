@@ -70,6 +70,15 @@ public interface IAppUpdater {
     AppUpdater setUpdateJSON(@NonNull String jsonUrl);
 
     /**
+     * Set the api key value for the json api key request if wanted
+     * If null, it will be ignored and WILL NOT use the api request way
+     *
+     * @param apiKeyValue apiKey
+     * @return this
+    */
+    AppUpdater setApiKeyValue(@NonNull String apiKeyValue);
+
+    /**
      * Set the times the app ascertains that a new update is available and display a dialog, Snackbar or notification. It makes the updates less invasive. Default: 1.
      *
      * @param times every X times
