@@ -1,1 +1,9 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS) // This is likely already set
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 include ':app', ':library'
